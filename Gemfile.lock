@@ -69,6 +69,7 @@ GEM
       mime-types (>= 1.16, < 3)
       nokogiri (~> 1.5)
       rails (>= 3, < 5)
+    database_cleaner (1.4.1)
     debug_inspector (0.0.2)
     diff-lcs (1.2.5)
     dotenv (2.0.1)
@@ -215,6 +216,7 @@ DEPENDENCIES
   capybara (~> 2.4.1)
   coffee-rails (~> 4.1.0)
   cucumber-rails (~> 1.4.2)
+  database_cleaner
   dotenv-rails
   haml-rails
   jbuilder (~> 2.0)
