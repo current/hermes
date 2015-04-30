@@ -20,6 +20,8 @@ gem 'turbolinks'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'unicorn'
 
+gem 'twilio-ruby'
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
@@ -27,6 +29,10 @@ group :development, :test do
   gem 'cucumber-rails', '~> 1.4.2', require: false
   gem 'rspec-rails', '~> 3.2.1'
   gem 'capybara', '~> 2.4.1'
+  gem 'timecop'
   gem 'database_cleaner'
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'guard-cucumber'
 end
 

@@ -81,8 +81,6 @@ test: &test
 production:
   <<: *default
   database: hermes_production
-  username: hermes
-  password: <%= ENV['HERMES_DATABASE_PASSWORD'] %>
 
 cucumber:
   <<: *test

@@ -11,9 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20150430065102) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "mobiles", force: :cascade do |t|
+    t.integer  "notification_id"
+    t.string   "country"
+    t.string   "area"
+    t.string   "subscriber"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "mobiles", ["notification_id"], name: "index_mobiles_on_notification_id", using: :btree
+
+  create_table "notifications", force: :cascade do |t|
+    t.datetime "trigger_at",                 null: false
+    t.string   "body",                       null: false
+    t.boolean  "done",       default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_foreign_key "mobiles", "notifications"
 end
