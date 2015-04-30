@@ -1,16 +1,9 @@
 class Mobile < ActiveRecord::Base
   belongs_to :notification
-
-  def number=(number)
-    values = number.match(/^\+(\d+)-(\d+)-(\d+)/).captures
-
-    %i[country area subscriber].each do |field|
-      self[field] = values.shift
-    end
-  end
+  scope :pending, -> { where(done: false) }
 
   def number
-    "+#{country}-#{area}-#{subscriber}"
+    "+#{country}#{area}#{subscriber}"
   end
 
   def notify(body)
@@ -20,5 +13,7 @@ class Mobile < ActiveRecord::Base
       from: ENV['TWILIO_FROM'],
       to: number,
       body: body
+
+    update(done: true)
   end
 end

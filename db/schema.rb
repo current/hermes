@@ -18,11 +18,12 @@ ActiveRecord::Schema.define(version: 20150430065102) do
 
   create_table "mobiles", force: :cascade do |t|
     t.integer  "notification_id"
-    t.string   "country"
-    t.string   "area"
-    t.string   "subscriber"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.boolean  "done",            default: false
+    t.string   "country",                         null: false
+    t.string   "area",                            null: false
+    t.string   "subscriber",                      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   add_index "mobiles", ["notification_id"], name: "index_mobiles_on_notification_id", using: :btree

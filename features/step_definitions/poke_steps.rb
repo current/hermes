@@ -1,9 +1,14 @@
 Dado(/^que há uma notificação para às "(.*?)"$/) do |time|
-  @notification = Notification.create(body: 'Hello World!', trigger_at: Time.parse(time))
+  @notification = Notification.create \
+    body: 'Hello World!',
+    trigger_at: Time.parse(time)
 end
 
 Dado(/^que a notificação será por SMS$/) do
-  @notification.mobiles.create(number: '+55-11-987654321')
+  @mobile = @notification.mobiles.create \
+    country: '55',
+    area: '11',
+    subscriber: '987654321'
 end
 
 Quando(/^for "(.*?)"$/) do |time|
@@ -16,4 +21,5 @@ Então(/^o cliente foi notificado$/) do
 end
 
 Então(/^o cliente foi notificado via SMS$/) do
+  expect(@mobile.reload).to be_done
 end
