@@ -11,6 +11,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'dotenv-rails'
+gem 'therubyracer'
 
 gem 'jbuilder', '~> 2.0'
 gem 'warden'
