@@ -11,30 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150430065102) do
+ActiveRecord::Schema.define(version: 20150506020324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "citext"
 
-  create_table "mobiles", force: :cascade do |t|
-    t.integer  "notification_id"
-    t.boolean  "done",            default: false
-    t.string   "country",                         null: false
-    t.string   "area",                            null: false
-    t.string   "subscriber",                      null: false
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-  end
-
-  add_index "mobiles", ["notification_id"], name: "index_mobiles_on_notification_id", using: :btree
-
-  create_table "notifications", force: :cascade do |t|
-    t.datetime "trigger_at",                 null: false
-    t.string   "body",                       null: false
-    t.boolean  "done",       default: false
+  create_table "appointments", force: :cascade do |t|
+    t.citext   "name",                       null: false
+    t.boolean  "notify",     default: true
+    t.boolean  "notified",   default: false
+    t.datetime "begin_at",                   null: false
+    t.datetime "notify_at"
+    t.string   "area"
+    t.string   "phone"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
 
-  add_foreign_key "mobiles", "notifications"
 end

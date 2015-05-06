@@ -1,25 +1,17 @@
 Dado(/^que há uma notificação para às "(.*?)"$/) do |time|
-  @notification = Notification.create \
-    body: 'Hello World!',
-    trigger_at: Time.parse(time)
-end
-
-Dado(/^que a notificação será por SMS$/) do
-  @mobile = @notification.mobiles.create \
-    country: '55',
+  @appointment = Appointment.create \
+    name: 'John Doe',
+    notify_at: Time.parse(time),
+    begin_at: Time.parse(time) + 6.hours,
     area: '11',
-    subscriber: '987654321'
+    phone: '987654321'
 end
 
 Quando(/^for "(.*?)"$/) do |time|
   Timecop.travel(Time.parse(time))
-  Notification.run!
+  Appointment.notify!
 end
 
 Então(/^o cliente foi notificado$/) do
-  expect(@notification.reload).to be_done
-end
-
-Então(/^o cliente foi notificado via SMS$/) do
-  expect(@mobile.reload).to be_done
+  expect(@appointment.reload).to be_notified
 end
