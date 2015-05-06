@@ -1,0 +1,19 @@
+= link_to 'Adicionar compromisso', [:new, :appointment]
+
+%ul
+  - 24.times do |hour|
+    %li
+      %dl
+        %dt Hora
+        %dd= hour
+
+      %ul
+        - @appointments.each do |appointment|
+          - next unless appointment.begin_at.hour == hour
+
+          %li
+            %dl
+              %dt Nome
+              %dd= appointment.name
+              %dt Horário
+              %dd= appointment.begin_at

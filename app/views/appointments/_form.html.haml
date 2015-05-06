@@ -1,0 +1,35 @@
+= form_for @appointment do |f|
+  - if @appointment.errors.any?
+    #error_explanation
+      %ul
+        - @appointment.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :area
+    = f.text_field :area
+  .field
+    = f.label :phone
+    = f.text_field :phone
+  .field
+    = f.label :begin_at
+    = f.datetime_select :begin_at,
+      start_year: Date.today.year,
+      end_year: Date.today.next_year.year,
+      minute_step: 15,
+      include_seconds: false
+  .field
+    = f.label :notify
+    = f.check_box :notify
+  .field
+    = f.label :notify_at
+    = f.datetime_select :notify_at,
+      start_year: Date.today.year,
+      end_year: Date.today.next_year.year,
+      minute_step: 15,
+      include_seconds: false
+  .actions
+    = f.submit 'Save'

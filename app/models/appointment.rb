@@ -2,6 +2,7 @@ class Appointment < ActiveRecord::Base
   validates_presence_of :name, :begin_at
   validates_presence_of :notify_at, :if => :notify
 
+  default_scope -> { order(:begin_at) }
   scope :outdated, -> { where('notify_at < ?', Time.zone.now) }
   scope :pending, -> { where(notify: true, notified: false) }
 
