@@ -17,3 +17,9 @@
               %dd= appointment.name
               %dt Horário
               %dd= appointment.begin_at
+%ul
+  - @week.each do |date, total|
+    %li
+      = link_to day_path(date.year, date.month, date.day) do
+        %div.date= date
+        %div.total= total

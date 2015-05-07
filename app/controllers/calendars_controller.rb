@@ -1,7 +1,8 @@
 class CalendarsController < ApplicationController
   def day
     @date = parse_date(params)
-    @appointments = Appointment.where('begin_at > ? and begin_at < ?', @date.midnight, @date.tomorrow.midnight)
+    @appointments = Appointment.at(@date)
+    @week = week(@date).map { |day| [day, Appointment.at(day).count] }
   end
 
   def month
@@ -14,5 +15,9 @@ class CalendarsController < ApplicationController
     else
       Date.today
     end
+  end
+
+  def week(base)
+    (1..6).map { |n| base + n.days }
   end
 end
