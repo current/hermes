@@ -1,0 +1,44 @@
+.day-view
+  border-right: 1px solid $gray
+  float: left
+  height: calc(100vh - 50px)
+  list-style: none
+  margin: 0
+  overflow: auto
+  padding: 20px 0 0
+  +span-columns(9)
+
+.day-slice
+  border-top: 1px solid $light
+  min-height: 50px
+  +clearfix
+
+.day-timestamp
+  color: $gray
+  float: left
+  font-size: 12px
+  text-align: right
+  width: 6%
+
+  time
+    background-color: $white
+    float: right
+    margin-top: -8px
+    padding: 0 2px
+
+.day-appointments
+  float: right
+  font-size: 14px
+  padding: 0 20px
+  width: 94%
+
+  ol
+    list-style: none
+    padding: 0
+
+.sidebar
+  padding: 10px 20px 0 0
+  +span-columns(3)
+
+.week-days
+  list-style: none

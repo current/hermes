@@ -1,23 +1,24 @@
-= link_to 'Marcar consulta', [:new, :appointment]
-
-%table.day-view
+%ol.day-view
   - 24.times do |hour|
-    %tr.day-hour
-      %td
-        = hour
+    %li.day-slice
+      %div.day-timestamp
+        %time= "#{hour}h00"
+      %div.day-appointments
+        - if @appointments
+          %ol
+            - @appointments.each do |appointment|
+              - next unless appointment.begin_at.hour == hour
+              %li
+                = appointment.begin_at
+                = appointment.name
 
-      %td
-        %ul
-          - @appointments.each do |appointment|
-            - next unless appointment.begin_at.hour == hour
-            %li
-              = appointment.begin_at
-              = appointment.name
+%aside.sidebar
+  = link_to 'Marcar consulta', [:new, :appointment]
 
-%ul.week-days
-  %li= link_to 'Hoje', '#'
-  - @week.each do |date, total|
-    %li
-      = link_to day_path(date.year, date.month, date.day) do
-        %time= date
-        %span.appointment-count= total
+  %ol.week-days
+    %li= link_to 'Hoje', '#'
+    - @week.each do |date, total|
+      %li
+        = link_to day_path(date.year, date.month, date.day) do
+          %time= date
+          %span.appointment-count= total
