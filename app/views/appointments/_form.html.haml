@@ -16,20 +16,6 @@
     = f.text_field :phone
   .field
     = f.label :begin_at
-    = f.datetime_select :begin_at,
-      start_year: Date.today.year,
-      end_year: Date.today.next_year.year,
-      minute_step: 15,
-      include_seconds: false
-  .field
-    = f.label :notify
-    = f.check_box :notify
-  .field
-    = f.label :notify_at
-    = f.datetime_select :notify_at,
-      start_year: Date.today.year,
-      end_year: Date.today.next_year.year,
-      minute_step: 15,
-      include_seconds: false
+    = f.text_field :begin_at
   .actions
     = f.submit 'Save'
