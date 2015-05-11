@@ -42,3 +42,36 @@
 
 .week-days
   list-style: none
+
+.mini-calendar
+  border: 1px solid $gray
+  font-size: 14px
+  text-align: center
+  width: 100%
+
+  thead
+    border-bottom: 1px solid $light
+
+  td,
+  th
+    height: 30px
+
+  a
+    border-radius: 50%
+    color: $dark
+    display: block
+    height: 30px
+    padding: 6px 0
+    text-decoration: none
+
+    &:hover,
+    &:focus
+      background-color: $light
+
+  .today a
+    background-color: $dark
+    color: $white
+    font-weight: bold
+
+  .next-month-day a
+    color: $light
