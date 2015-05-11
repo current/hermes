@@ -4,14 +4,14 @@ class CreateAppointments < ActiveRecord::Migration
 
     create_table :appointments do |t|
       t.citext :name, null: false
-      t.boolean :notify, default: true
       t.boolean :notified, default: false
-      t.timestamp :begin_at, null: false
-      t.timestamp :notify_at
+      t.timestamp :begin_at, null: false, index: true
       t.string :area
       t.string :phone
 
       t.timestamps null: false
     end
+
+    execute "CREATE INDEX ON appointments (date(begin_at))"
   end
 end
