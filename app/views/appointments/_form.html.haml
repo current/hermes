@@ -16,6 +16,7 @@
     = f.text_field :phone
   .field
     = f.label :begin_at
-    = f.text_field :begin_at
+    = f.date_select :begin_at
+    = f.time_select :begin_at, minute_step: 15
   .actions
     = f.submit 'Save'
