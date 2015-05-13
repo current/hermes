@@ -2,9 +2,11 @@ class Appointment < ActiveRecord::Base
   validates_presence_of :name, :begin_at
 
   default_scope -> { order(:begin_at) }
-  scope :outdated, -> { where('begin_at < ?', Time.zone.now + 1.day) }
+  scope :after, -> (ts) { where('begin_at > ?', ts.midnight) }
+  scope :before, -> (ts) { where('begin_at < ?', ts.tomorrow.midnight) }
+  scope :at, -> (ts) { before(ts).after(ts) }
+  scope :outdated, -> { before(Time.zone.now + 1.day) }
   scope :pending, -> { where(notified: false) }
-  scope :at, -> (ts) { where('DATE(begin_at) = ?', ts.to_date) }
 
   def self.notify!
     pending.outdated.find_each { |a| a.notify! }
@@ -19,6 +21,10 @@ class Appointment < ActiveRecord::Base
       body: name
 
     update(notified: true)
+  end
+
+  def begin_at
+    read_attribute(:begin_at) || Time.zone.now
   end
 
   def number

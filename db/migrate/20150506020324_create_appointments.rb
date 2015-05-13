@@ -11,7 +11,5 @@ class CreateAppointments < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-
-    execute "CREATE INDEX ON appointments (date(begin_at))"
   end
 end
