@@ -12,5 +12,10 @@ module Hermes
     config.time_zone = 'Brasilia'
 
     config.active_record.raise_in_transactional_callbacks = true
+
+    config.generators do |g|
+      g.view_specs false
+      g.helper_specs false
+    end
   end
 end
