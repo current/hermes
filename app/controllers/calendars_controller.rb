@@ -1,4 +1,12 @@
 class CalendarsController < ApplicationController
+  def today
+    @date = Date.today
+    @appointments = Appointment.at(@date)
+    @week = week(@date).map { |day| [day, Appointment.at(day).count] }
+
+    render :day
+  end
+
   def day
     @date = parse_date(params)
     @appointments = Appointment.at(@date)

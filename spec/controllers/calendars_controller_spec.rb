@@ -11,14 +11,14 @@ RSpec.describe CalendarsController, type: :controller do
 
   describe "GET #month" do
     it "returns http success" do
-      get :month
+      get :month, month: '02', year: '1982'
       expect(response).to have_http_status(:success)
     end
   end
 
   describe "GET #day" do
     it "returns http success" do
-      get :day
+      get :day, day: '02', month: '02', year: '1982'
       expect(response).to have_http_status(:success)
     end
   end
