@@ -14,11 +14,10 @@
 
 %aside.sidebar
   = link_to 'Marcar consulta', [:new, :appointment]
-
   = render 'mini'
 
   %ol
-    %li= link_to 'Hoje', '#'
+    %li= link_to 'Hoje', today_path
     - @week.each do |date, total|
       %li
         = link_to day_path(date.year, date.month, date.day) do
