@@ -15,9 +15,9 @@
 %aside.sidebar
   = link_to 'Marcar consulta', [:new, :appointment]
 
-  = render 'mini_calendar'
+  = render 'mini'
 
-  %ol.week-days
+  %ol
     %li= link_to 'Hoje', '#'
     - @week.each do |date, total|
       %li
