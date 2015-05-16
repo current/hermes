@@ -1,25 +1,26 @@
-= link_to 'Adicionar compromisso', [:new, :appointment]
-
-%ul
+%ol.day-view
   - 24.times do |hour|
-    %li
-      %dl
-        %dt Hora
-        %dd= hour
+    %li.day-slice
+      %div.day-timestamp
+        %time= "#{hour}h00"
+      %div.day-appointments
+        - if @appointments
+          %ol
+            - @appointments.each do |appointment|
+              - next unless appointment.begin_at.hour == hour
+              %li
+                = appointment.begin_at
+                = appointment.name
 
-      %ul
-        - @appointments.each do |appointment|
-          - next unless appointment.begin_at.hour == hour
+%aside.sidebar
+  = link_to 'Marcar consulta', [:new, :appointment]
 
-          %li
-            %dl
-              %dt Nome
-              %dd= appointment.name
-              %dt Horário
-              %dd= appointment.begin_at
-%ul
-  - @week.each do |date, total|
-    %li
-      = link_to day_path(date.year, date.month, date.day) do
-        %div.date= date
-        %div.total= total
+  = render 'mini_calendar'
+
+  %ol.week-days
+    %li= link_to 'Hoje', '#'
+    - @week.each do |date, total|
+      %li
+        = link_to day_path(date.year, date.month, date.day) do
+          %time= date
+          %span.appointment-count= total

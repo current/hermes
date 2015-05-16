@@ -1,13 +1,17 @@
 !!!
 %html
   %head
+    %meta(charset="utf-8")
     %title Hermes
-    = stylesheet_link_tag 'application',
-      'data-turbolinks-track' => true,
-      'media' => 'all'
-    = javascript_include_tag 'application',
-      'data-turbolinks-track' => true
+    = stylesheet_link_tag 'application', 'data-turbolinks-track' => true, 'media' => 'all'
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
 
   %body
-    = yield
+    %main
+      %header
+        = link_to 'Hermes', '/', class: 'logo'
+        %nav
+          = link_to 'Configurações', '#'
+          = link_to 'Sair', '#'
+      %section= yield
