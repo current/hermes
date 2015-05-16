@@ -1,10 +1,9 @@
 Dado(/^que há uma notificação para às "(.*?)"$/) do |time|
   @appointment = Appointment.create \
     name: 'John Doe',
-    notify_at: Time.parse(time),
+    notified: false,
     begin_at: Time.parse(time) + 6.hours,
-    area: '11',
-    phone: '987654321'
+    area: '11', phone: '987654321'
 end
 
 Quando(/^for "(.*?)"$/) do |time|
