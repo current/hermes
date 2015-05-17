@@ -1,0 +1,9 @@
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: hermes_test
+  username: postgres
+  pool: 5
+
+cucumber:
+  <<: *test

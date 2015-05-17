@@ -10,7 +10,6 @@ development:
 test: &test
   <<: *default
   database: hermes_test
-  username: postgres
 
 cucumber:
   <<: *test
