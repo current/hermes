@@ -1,4 +1,4 @@
-test:
+test: &test
   adapter: postgresql
   encoding: unicode
   database: hermes_test
