@@ -6,3 +6,6 @@ addons:
 before_script:
   - 'cp config/database.yml.travis config/database.yml'
   - 'bin/rake db:reset'
+notifications:
+  email: false
+  slack: current:YZyIrlMqGNu88Jbsb4eEHxjC
