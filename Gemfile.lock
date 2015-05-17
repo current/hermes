@@ -81,9 +81,6 @@ GEM
     database_cleaner (1.4.1)
     debug_inspector (0.0.2)
     diff-lcs (1.2.5)
-    dotenv (2.0.1)
-    dotenv-rails (2.0.1)
-      dotenv (= 2.0.1)
     erubis (2.7.0)
     execjs (2.5.2)
     ffi (1.9.8)
@@ -289,7 +286,6 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   cucumber-rails (~> 1.4.2)
   database_cleaner
-  dotenv-rails
   guard
   guard-cucumber
   guard-rspec
