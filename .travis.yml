@@ -1,7 +1,10 @@
 language: ruby
 rvm:
   - 2.2.2
+env:
+  - RAILS_ENV=test
 addons:
   postgresql: '9.3'
 before_script:
-  - cp config/database.yml.travis config/database.yml
+  - 'cp config/database.yml.travis config/database.yml'
+  - 'bin/rake db:reset'
