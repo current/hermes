@@ -1,3 +1,9 @@
+# Hermes Notifier
+[![Build Status](https://travis-ci.org/current/hermes.svg?branch=master)](https://travis-ci.org/current/hermes)
+[![Code Climate](https://codeclimate.com/github/current/hermes/badges/gpa.svg)](https://codeclimate.com/github/current/hermes)
+
+The notifier for your business.
+
 ## TL;DR;
 
 1. Install dependencies: PostgreSQL and foreman
