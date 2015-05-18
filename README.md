@@ -1,7 +1,8 @@
 # Hermes Notifier
+
 [![Build Status](https://travis-ci.org/current/hermes.svg?branch=master)](https://travis-ci.org/current/hermes)
-[![Code Climate](https://codeclimate.com/github/current/hermes/badges/gpa.svg)](https://codeclimate.com/github/current/hermes)
 [![Test Coverage](https://codeclimate.com/github/current/hermes/badges/coverage.svg)](https://codeclimate.com/github/current/hermes/coverage)
+[![Code Climate](https://codeclimate.com/github/current/hermes/badges/gpa.svg)](https://codeclimate.com/github/current/hermes)
 
 The notifier for your business.
 
