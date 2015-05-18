@@ -40,6 +40,5 @@ group :development, :test do
   gem 'guard-cucumber'
 end
 
-group :test do
-  gem "codeclimate-test-reporter", require: nil
-end
+gem 'codeclimate-test-reporter', group: :test
+gem 'rails_12factor', group: :production
