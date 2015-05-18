@@ -35,7 +35,7 @@ pass at test suite
 The prefered way to run it at your machine is through oreman. You can install
 it by 3 ways:
 
-- [Ruby gem +foreman+](https://rubygems.org/gems/foreman)
+- [Ruby gem foreman](https://rubygems.org/gems/foreman)
 - [Heroku toolbelt](https://toolbelt.heroku.com/)
 - [Mac OS X package](http://assets.foreman.io/foreman/foreman.pkg)
 
