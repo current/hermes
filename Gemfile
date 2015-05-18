@@ -40,3 +40,6 @@ group :development, :test do
   gem 'guard-cucumber'
 end
 
+group :test do
+  gem "codeclimate-test-reporter", require: nil
+end

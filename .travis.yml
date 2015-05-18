@@ -3,6 +3,7 @@ rvm:
   - 2.2.2
 addons:
   postgresql: '9.3'
+  code_climate: 8567fed65609347b6e898d3acb5d92e29e5c1fb79509675f4cc1bd6620a53d60
 cache: bundler
 before_script:
   - 'cp config/database.yml.travis config/database.yml'
