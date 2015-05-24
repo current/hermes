@@ -9,7 +9,7 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.new(appointment_params)
 
     if @appointment.save
-      redirect_to today_path, notice: 'Appointment was successfully created.'
+      redirect_to calendar_path, notice: 'Appointment was successfully created.'
     else
       render :new
     end
@@ -17,7 +17,7 @@ class AppointmentsController < ApplicationController
 
   def update
     if @appointment.update(appointment_params)
-      redirect_to today_path, notice: 'Appointment was successfully updated.'
+      redirect_to calendar_path, notice: 'Appointment was successfully updated.'
     else
       render :edit
     end
