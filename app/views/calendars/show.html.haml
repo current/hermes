@@ -1,16 +1,13 @@
-%ol.day-view
-  - 24.times do |hour|
-    %li.day-slice
-      %div.day-timestamp
-        %time= "#{hour}h00"
-      %div.day-appointments
-        - if @appointments
-          %ol
-            - @appointments.each do |appointment|
-              - next unless appointment.begin_at.hour == hour
-              %li
-                = appointment.begin_at
-                = appointment.name
+%div.container
+  %div.row
+    %div.col-md-9
+      %ul
+        - 24.times do |i|
+          %li
+            = i
+            %ul
+              - select_by_hour(i, @appointments).each do |appointment|
+                %li= appointment.name
 
-%aside.sidebar
-  = link_to 'Marcar consulta', [:new, :appointment]
+    %div.col-md-3
+      = link_to 'Adicionar compromisso', [:new, :appointment]

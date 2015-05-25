@@ -8,10 +8,14 @@
     = csrf_meta_tags
 
   %body
-    %main
-      %header
-        = link_to 'Hermes', '/', class: 'logo'
-        %nav
+    %div.container
+      %div.row
+        %div.col-md-10
+          = link_to calendar_path do
+            %h1 Hermes
+        %div.col-md-1
           = link_to 'Configurações', '#'
+        %div.col-md-1
           = link_to 'Sair', '#'
-      %section= yield
+
+    = yield
