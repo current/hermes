@@ -2,12 +2,9 @@
   %div.row
     %div.col-md-9
       %ul
-        - 24.times do |i|
-          %li
-            = i
-            %ul
-              - select_by_hour(i, @appointments).each do |appointment|
-                %li= appointment.name
+        - @appointments.each do |appointment|
+          %li= appointment.name
 
     %div.col-md-3
+      %i.glyphicon.glyphicon-plus
       = link_to 'Adicionar compromisso', [:new, :appointment]
