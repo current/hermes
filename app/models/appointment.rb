@@ -23,10 +23,6 @@ class Appointment < ActiveRecord::Base
     update(notified: true)
   end
 
-  def begin_at
-    read_attribute(:begin_at) || Time.zone.now
-  end
-
   def number
     country + area + phone
   end
