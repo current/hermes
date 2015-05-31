@@ -8,14 +8,6 @@ describe CalendarsController do
     end
 
     it 'routes to #show' do
-      expect(:get => '/calendar/1982').to route_to('calendars#show', year: '1982')
-    end
-
-    it 'routes to #show' do
-      expect(:get => '/calendar/1982/02').to route_to('calendars#show', year: '1982', month: '02')
-    end
-
-    it 'routes to #show' do
       expect(:get => '/calendar/1982/02/02').to route_to('calendars#show', year: '1982', month: '02', day: '02')
     end
 
