@@ -1,5 +1,5 @@
 class Appointment < ActiveRecord::Base
-  validates_presence_of :name, :begin_at
+  validates_presence_of :name, :area, :phone, :begin_at
 
   default_scope -> { order(:begin_at) }
   scope :after, -> (ts) { where('begin_at > ?', ts.midnight) }
