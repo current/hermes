@@ -1,18 +1,20 @@
 class CalendarsController < ApplicationController
-  before_action :set_date
-
   def show
-    @appointments = Appointment.at(@date)
+    @appointments = Appointment.at(time)
   end
 
   private
-  def set_date
-    today = Date.today
+  def time
+    if year && month && day
+      Time.zone.parse("#{year}-#{month}-#{day}")
+    else
+      Time.zone.today
+    end
+  end
 
-    year = params[:year] || today.year
-    month = params[:month] || today.month
-    day = params[:day] || today.day
-
-    @date = Date.parse("#{year}-#{month}-#{day}")
+  [:year, :month, :day].each do |field|
+    define_method field do
+      params[field]
+    end
   end
 end
