@@ -4,11 +4,13 @@
       %ul
         - @appointments.each do |appointment|
           %li= appointment.name
-        - 24.times do%li foo
+        - 224.times do
+          %li foo
 
     %div.col-md-3
-      %i.glyphicon.glyphicon-plus
-      = link_to 'Adicionar compromisso', [:new, :appointment]
+      = link_to [:new, :appointment], class: 'btn btn-primary' do
+        %i.glyphicon.glyphicon-plus
+        %span Adicionar compromisso
 
       %div.datepicker
       %input(type='hidden' name='appointment[begin_at]')

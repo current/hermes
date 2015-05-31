@@ -9,27 +9,27 @@
 
   %div.row
     %div.col-md-3
-      %div.datepicker
+      %div.datepicker.well
       = f.hidden_field :begin_at
 
-    %div.col-md-6
-      %div.form-group
+    %div.col-md-3
+      %div.form-group.form-group-lg
         = f.label :name
-        = f.text_field :name
-      %div.form-group
+        = f.text_field :name, class: 'form-control'
+      %div.form-group.form-group-lg
         = f.label :area
-        = f.text_field :area
-      %div.form-group
+        = f.text_field :area, class: 'form-control'
+      %div.form-group.form-group-lg
         = f.label :phone
-        = f.text_field :phone
+        = f.text_field :phone, class: 'form-control'
 
-      %div.form-group
+      %div.form-group.form-group-lg
         = f.label :begin_at
-        = f.time_select :begin_at, minute_step: 15
+        = f.time_select :begin_at, minute_step: 15, class: 'form-control'
 
   %div.row
     %div.form-group
-      %div.col-md-1.col-md-offset-2
-        = f.submit 'Cancelar'
-      %div.col-md-1
-        = f.submit 'Adicionar'
+      %div.col-md-2.col-md-offset-1
+        %a.btn.btn-lg.btn-default(href=calendar_path) Cancelar
+      %div.col-md-2
+        %button.btn.btn-lg.btn-primary Salvar
