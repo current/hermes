@@ -4,8 +4,6 @@
       %ul
         - @appointments.each do |appointment|
           %li= appointment.name
-        - 224.times do
-          %li foo
 
     %div.col-md-3
       = link_to [:new, :appointment], class: 'btn btn-primary' do
