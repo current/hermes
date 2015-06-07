@@ -12,7 +12,6 @@ gem 'therubyracer'
 gem 'haml-rails'
 gem 'sass-rails'
 gem 'bootstrap-sass'
-gem 'bootstrap-datepicker-rails'
 
 gem 'jbuilder', '~> 2.0'
 gem 'warden'

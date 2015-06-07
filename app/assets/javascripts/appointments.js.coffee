@@ -1,14 +1,21 @@
-change = ->
-  picker = $('div.datepicker')
-  input = $("[name='appointment[begin_at]']")
+ts = 'YYYY-MM-DD HH:mm:ss ZZ'
 
-  picker.datepicker
-     language: 'pt-BR'
-     todayHighlight: true
-     todayBtn: true
+hermes.appointment = ->
+  input = $('#appointment_begin_at')
+  picker = $('#calendar')
 
-  picker.on 'changeDate', ->
-    input.val picker.datepicker('getDate')
+  picker.datetimepicker
+    inline: true
+    locale: 'pt-br'
+    sideBySide: true
+    stepping: 15
 
+  dp = picker.data('DateTimePicker')
 
-$(document).on('page:change', change)
+  if input.val() is ''
+    input.val(dp.date().format(ts))
+  else
+    dp.date(moment(input.val(), ts))
+
+  picker.on 'dp.change', ->
+    input.val(dp.date().format(ts))
