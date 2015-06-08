@@ -1,5 +1,6 @@
 class Appointment < ActiveRecord::Base
-  validates_presence_of :name, :begin_at
+  attr_accessor :time, :date
+  validates_presence_of :name, :area, :phone, :begin_at
 
   default_scope -> { order(:begin_at) }
   scope :after, -> (ts) { where('begin_at > ?', ts.midnight) }
@@ -21,10 +22,6 @@ class Appointment < ActiveRecord::Base
       body: name
 
     update(notified: true)
-  end
-
-  def begin_at
-    read_attribute(:begin_at) || Time.zone.now
   end
 
   def number

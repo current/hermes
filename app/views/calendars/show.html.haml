@@ -1,0 +1,20 @@
+%div.container
+  %div.col-md-9
+    %div.row
+      %a.btn.btn-primary(href=new_appointment_path)
+        %i.glyphicon.glyphicon-plus
+        %span Adicionar compromisso
+
+    %div.row
+      %ul.list-group
+        - @appointments.each do |appointment|
+          %li.list-group-item.list-group-item-info
+            = l(appointment.begin_at, format: '%H:%M')
+            = appointment.name
+
+  %div.col-md-3
+    %div.row.well
+      %input#calendar(type='hidden')
+
+:coffee
+  hermes.calendar("#{l(time, format: '%Y/%m/%d')}")

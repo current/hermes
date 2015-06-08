@@ -1,22 +1,32 @@
 = form_for @appointment do |f|
-  - if @appointment.errors.any?
-    #error_explanation
-      %ul
-        - @appointment.errors.full_messages.each do |msg|
-          %li= msg
+  = f.hidden_field :begin_at
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :area
-    = f.text_field :area
-  .field
-    = f.label :phone
-    = f.text_field :phone
-  .field
-    = f.label :begin_at
-    = f.date_select :begin_at
-    = f.time_select :begin_at, minute_step: 15
-  .actions
-    = f.submit 'Save'
+  - if @appointment.errors.any?
+    %div.row.well
+      %div.col-md-6
+        #error_explanation
+          %ul
+            - @appointment.errors.full_messages.each do |msg|
+              %li= msg
+
+  %div.row
+    %div.col-md-5
+      #calendar
+  %div.form-group.form-group-lg
+    %div.col-md-5
+      = f.label :name
+      = f.text_field :name, class: 'form-control'
+  %div.form-group.form-group-lg
+    %div.col-md-1
+      = f.label :area
+      = f.text_field :area, class: 'form-control'
+    %div.col-md-2
+      = f.label :phone
+      = f.text_field :phone, class: 'form-control'
+
+  %div.form-group.col-md-5
+    %a.btn.btn-lg.btn-default(href=calendar_path) Cancelar
+    %button.btn.btn-lg.btn-primary Salvar
+
+:coffee
+  do hermes.appointment

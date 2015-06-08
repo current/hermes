@@ -11,10 +11,7 @@ gem 'therubyracer'
 
 gem 'haml-rails'
 gem 'sass-rails'
-gem 'bourbon'
-gem 'neat'
-gem 'normalize-rails'
-gem 'autoprefixer-rails'
+gem 'bootstrap-sass'
 
 gem 'jbuilder', '~> 2.0'
 gem 'warden'

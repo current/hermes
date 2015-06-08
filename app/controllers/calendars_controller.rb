@@ -1,31 +1,18 @@
 class CalendarsController < ApplicationController
-  def today
-    @date = Date.today
-    @appointments = Appointment.at(@date)
-    @week = week(@date).map { |day| [day, Appointment.at(day).count] }
+  helper_method :time
 
-    render :day
-  end
-
-  def day
-    @date = parse_date(params)
-    @appointments = Appointment.at(@date)
-    @week = week(@date).map { |day| [day, Appointment.at(day).count] }
-  end
-
-  def month
+  def show
+    @appointments = Appointment.at(time)
   end
 
   private
-  def parse_date(from)
-    if from[:year] && from[:month] && from[:day]
-      Date.parse("#{from[:year]}-#{from[:month]}-#{from[:day]}")
-    else
-      Date.today
-    end
+  def time
+    Time.zone.parse("#{year}-#{month}-#{day}")
   end
 
-  def week(base)
-    (1..6).map { |n| base + n.days }
+  [:year, :month, :day].each do |field|
+    define_method field do
+      params[field] || Time.zone.now.send(field)
+    end
   end
 end
