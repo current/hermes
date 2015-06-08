@@ -7,16 +7,12 @@ class CalendarsController < ApplicationController
 
   private
   def time
-    if year && month && day
-      Time.zone.parse("#{year}-#{month}-#{day}")
-    else
-      Time.zone.today
-    end
+    Time.zone.parse("#{year}-#{month}-#{day}")
   end
 
   [:year, :month, :day].each do |field|
     define_method field do
-      params[field]
+      params[field] || Time.zone.now.send(field)
     end
   end
 end
