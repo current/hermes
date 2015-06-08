@@ -11,4 +11,4 @@ hermes.calendar = (date) ->
 
   picker.on 'dp.change', (ev) ->
     next = ev.date.format(ts)
-    location.assign("/calendar/#{next}")
+    Turbolinks.visit("/calendar/#{next}")
