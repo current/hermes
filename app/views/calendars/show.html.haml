@@ -10,7 +10,7 @@
         %i.glyphicon.glyphicon-plus
         %span Adicionar compromisso
 
-      #calendar
+      %input#calendar(type='hidden')
 
 :coffee
-  do hermes.calendar
+  hermes.calendar("#{l(time, format: '%Y/%m/%d')}")

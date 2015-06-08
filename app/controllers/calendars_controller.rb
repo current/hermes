@@ -1,4 +1,6 @@
 class CalendarsController < ApplicationController
+  helper_method :time
+
   def show
     @appointments = Appointment.at(time)
   end
