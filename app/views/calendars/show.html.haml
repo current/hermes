@@ -10,5 +10,7 @@
         %i.glyphicon.glyphicon-plus
         %span Adicionar compromisso
 
-      %div.datepicker
-      %input(type='hidden' name='appointment[begin_at]')
+      #calendar
+
+:coffee
+  do hermes.calendar
