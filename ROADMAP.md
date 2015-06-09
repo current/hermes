@@ -12,3 +12,4 @@
 - Criar planos
 - Fazer assinatura mensal
 - Emitir Nota Fiscal
+- Adicionar API
