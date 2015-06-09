@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
-  get '/calendar(/:year/:month/:day)' => 'calendars#show', as: 'calendar'
-  resources :appointments, except: [:index]
+  resources :appointments do
+    get '/:year/:month/:day' => 'appointments#index', on: :collection
+  end
 end

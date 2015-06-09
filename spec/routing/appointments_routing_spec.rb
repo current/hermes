@@ -3,6 +3,14 @@ require 'rails_helper'
 describe AppointmentsController do
   describe 'routing' do
 
+    it 'routes to #index' do
+      expect(:get => '/appointments').to route_to('appointments#index')
+    end
+
+    it 'routes to #show' do
+      expect(:get => '/appointments/1982/02/02').to route_to('appointments#index', year: '1982', month: '02', day: '02')
+    end
+
     it 'routes to #new' do
       expect(:get => '/appointments/new').to route_to('appointments#new')
     end
