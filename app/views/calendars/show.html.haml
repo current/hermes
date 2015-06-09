@@ -9,8 +9,9 @@
       %ul.list-group
         - @appointments.each do |appointment|
           %li.list-group-item.list-group-item-info
-            = l(appointment.begin_at, format: '%H:%M')
-            = appointment.name
+            = link_to [:edit, appointment] do
+              = l(appointment.begin_at, format: '%H:%M')
+              = appointment.name
 
   %div.col-md-3
     %div.row.well
