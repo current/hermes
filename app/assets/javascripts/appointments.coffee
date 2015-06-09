@@ -12,10 +12,10 @@ hermes.appointment = ->
 
   dp = picker.data('DateTimePicker')
 
-  if input.val() is ''
-    picker.trigger 'db.change'
-  else
-    dp.date moment(input.val(), ts)
-
   picker.on 'dp.change', ->
     input.val dp.date().format(ts)
+
+  if input.val() is ''
+    picker.trigger 'dp.change'
+  else
+    dp.date moment(input.val(), ts)
