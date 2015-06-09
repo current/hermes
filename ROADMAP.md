@@ -1,3 +1,4 @@
+# Features
 - Editar um compromisso
 - Criar usuário
 - Login
@@ -13,3 +14,6 @@
 - Fazer assinatura mensal
 - Emitir Nota Fiscal
 - Adicionar API
+
+# Bugs
+- Compromisso criado às 0:00 não aparece em nenhuma listagem
