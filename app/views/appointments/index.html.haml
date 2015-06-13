@@ -9,7 +9,7 @@
       %ul.list-group
         - @appointments.each do |appointment|
           %li.list-group-item.list-group-item-info
-            = link_to [:edit, appointment] do
+            = link_to appointment do
               = l(appointment.begin_at, format: '%H:%M')
               = appointment.name
 
