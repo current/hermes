@@ -31,6 +31,7 @@ group :development, :test do
   gem 'cucumber-rails', '~> 1.4.2', require: false
   gem 'rspec-rails', '~> 3.2.1'
   gem 'capybara', '~> 2.4.1'
+  gem 'poltergeist'
   gem 'timecop'
   gem 'database_cleaner'
   gem 'guard'

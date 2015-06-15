@@ -1,17 +1,21 @@
+
 %div.container
   %div.col-md-9
-    %div.row
-      %a.btn.btn-primary(href=new_appointment_path)
-        %i.glyphicon.glyphicon-plus
-        %span Adicionar compromisso
+    - if flash.notice
+      %div.alert.alert-success(role='alert')
+        %span.glyphicon.glyphicon-saved(aria-hidden='true')
+        = flash.notice
 
-    %div.row
-      %ul.list-group
-        - @appointments.each do |appointment|
-          %li.list-group-item.list-group-item-info
-            = link_to appointment do
-              = l(appointment.begin_at, format: '%H:%M')
-              = appointment.name
+    %a.btn.btn-primary(href=new_appointment_path)
+      %i.glyphicon.glyphicon-plus
+      %span Adicionar compromisso
+
+    %ul.list-group
+      - @appointments.each do |appointment|
+        %li.list-group-item.list-group-item-info
+          = link_to appointment do
+            = l(appointment.begin_at, format: '%H:%M')
+            = appointment.name
 
   %div.col-md-3
     %div.row.well
