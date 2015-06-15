@@ -1,14 +1,19 @@
 
 %div.container
+  %div.col-md-3
+    %div.row.form-group
+      %a.btn.btn-primary.btn-lg.btn-block(href=new_appointment_path)
+        %i.glyphicon.glyphicon-plus
+        %span Adicionar compromisso
+
+    %div.well.row
+      %input#calendar(type='hidden')
+
   %div.col-md-9
     - if flash.notice
       %div.alert.alert-success(role='alert')
         %span.glyphicon.glyphicon-saved(aria-hidden='true')
         = flash.notice
-
-    %a.btn.btn-primary(href=new_appointment_path)
-      %i.glyphicon.glyphicon-plus
-      %span Adicionar compromisso
 
     %ul.list-group
       - @appointments.each do |appointment|
@@ -16,10 +21,6 @@
           = link_to appointment do
             = l(appointment.begin_at, format: '%H:%M')
             = appointment.name
-
-  %div.col-md-3
-    %div.row.well
-      %input#calendar(type='hidden')
 
 :coffee
   hermes.appointments("#{l(time, format: '%Y/%m/%d')}")
