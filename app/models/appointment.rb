@@ -9,6 +9,8 @@ class Appointment < ActiveRecord::Base
   scope :outdated, -> { before(Time.zone.now + 1.day) }
   scope :pending, -> { where(notified: false) }
 
+  validate :area_format, :phone_format
+
   def self.notify!
     pending.outdated.find_each { |a| a.notify! }
   end
@@ -25,10 +27,17 @@ class Appointment < ActiveRecord::Base
   end
 
   def number
-    country + area + phone
+    "+55#{(area + phone).gsub(/\D/, '')}"
   end
 
-  def country
-    '+55'
+  private
+  def area_format
+    errors.add(:area, :invalid) if area !~ /\A\d\d\z/
+  end
+
+  def phone_format
+    errors.add(:phone, :invalid) if phone =~ /[^\d -]/
+    errors.add(:phone, :invalid) if phone.gsub(/\D/, '').size < 8
+    errors.add(:phone, :invalid) if phone.gsub(/\D/, '').size > 9
   end
 end

@@ -13,6 +13,45 @@ describe Appointment do
   it { should_not be_notified }
   it { expect(appointment.number).to eq('+5511987654321') }
 
+  describe 'area' do
+    it 'with too many chars' do
+      appointment.area = '111'
+      should_not be_valid
+    end
+
+    it 'with few chars' do
+      appointment.area = '1'
+      should_not be_valid
+    end
+
+    it 'with letters' do
+      appointment.area = '1x'
+      should_not be_valid
+    end
+  end
+
+  describe 'phone' do
+    it 'with exotic format' do
+      appointment.phone = '9 8765-4321'
+      should be_valid
+    end
+
+    it 'with too many chars' do
+      appointment.phone = '9876543210'
+      should_not be_valid
+    end
+
+    it 'with few chars' do
+      appointment.phone = '9876543'
+      should_not be_valid
+    end
+
+    it 'with letters' do
+      appointment.phone = '98765432X'
+      should_not be_valid
+    end
+  end
+
   describe 'begin at' do
     subject(:begin_at) { appointment.begin_at }
 
