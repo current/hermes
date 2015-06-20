@@ -1,5 +1,5 @@
 # language: pt
-Funcionalidade: Compromisso
+Funcionalidade: Gerenciar compromissos
 
   Para lembrar os clientes
   Como gerente de um consultório
