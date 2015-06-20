@@ -16,6 +16,6 @@
 //= require bootstrap
 //= require moment-with-locales
 //= require bootstrap-datetimepicker
-//= jquery.maskedinput
+//= require jquery.maskedinput
 //= require hermes
 //= require_tree .

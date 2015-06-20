@@ -1,4 +1,7 @@
 hermes.appointment = ->
+  $('#appointment_area').mask('99')
+  $('#appointment_phone').mask('99999999?9')
+
   ts = 'YYYY-MM-DD HH:mm:ss ZZ'
 
   input = $('#appointment_begin_at')
