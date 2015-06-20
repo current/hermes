@@ -14,7 +14,7 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.new(appointment_params)
 
     if @appointment.save
-      redirect_to :appointments, notice: 'Compromisso adicionado'
+      redirect_to [:date, @appointment.to_date], notice: 'Compromisso adicionado'
     else
       render :new
     end
@@ -22,7 +22,7 @@ class AppointmentsController < ApplicationController
 
   def update
     if @appointment.update(appointment_params)
-      redirect_to @appointment, notice: 'Appointment was successfully updated.'
+      redirect_to [:date, @appointment.to_date], notice: 'Compromisso alterado'
     else
       render :edit
     end

@@ -30,6 +30,10 @@ class Appointment < ActiveRecord::Base
     "+55#{(area + phone).gsub(/\D/, '')}"
   end
 
+  def to_date
+    { year: begin_at.year, month: begin_at.month, day: begin_at.day }
+  end
+
   private
   def area_format
     errors.add(:area, :invalid) if area !~ /\A\d\d\z/

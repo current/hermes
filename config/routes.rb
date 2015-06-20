@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :appointments do
-    get '/:year/:month/:day' => 'appointments#index', on: :collection
-  end
+  resources :appointments
+  get '/appointments/:year/:month/:day' => 'appointments#index', as: 'date'
 end
