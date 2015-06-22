@@ -14,36 +14,25 @@
         %span.glyphicon.glyphicon-saved(aria-hidden='true')
         = flash.notice
 
-    %table
+    %ul.list-group
       - @appointments.each do |appointment|
         %li.list-group-item
-          %h1= l(appointment.begin_at, format: '%H:%M')
-          = appointment.name
-          = "#{appointment.area}-#{appointment.phone}"
+          %strong= l(appointment.begin_at, format: '%H:%M')
+          %big.name= appointment.name
 
-          %ol.list-inline.pull-right
-            %li.btn-group
+          %ol.actions.list-inline.pull-right
+            %div.btn-group
+              = link_to 'Editar', [:edit, appointment], class: %[btn btn-default]
               %button.btn.btn-default.dropdown-toggle(data-toggle='dropdown')
-                %span.glyphicon.glyphicon-time
-                Aguardando
                 %span.caret
 
               %ul.dropdown-menu
                 %li
+                  %a(href='#') Aguardando
+                %li
                   %a(href='#') Confirmar
                 %li
                   %a(href='#') Desmarcar
-
-            %li
-              = link_to [:edit, appointment],
-                class: %w[btn btn-primary] do
-                %span.glyphicon.glyphicon-pencil
-                Editar
-
-            %li
-              %button.btn.btn-danger
-                %span.glyphicon.glyphicon-trash
-                Deletar
 
 :coffee
   hermes.appointments("#{l(time, format: '%Y/%m/%d')}")
