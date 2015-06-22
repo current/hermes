@@ -16,7 +16,7 @@
 
     %ul.list-group
       - @appointments.each do |appointment|
-        %li.list-group-item
+        %li.list-group-item(class="#{appointment.status}")
           %strong= l(appointment.begin_at, format: '%H:%M')
           %big.name= appointment.name
 

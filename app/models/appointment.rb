@@ -26,6 +26,15 @@ class Appointment < ActiveRecord::Base
     update(notified: true)
   end
 
+  def status
+    [
+      'list-group-item-success',
+      'list-group-item-danger',
+      'list-group-item-warning',
+      nil
+    ].sample
+  end
+
   def number
     "+55#{(area + phone).gsub(/\D/, '')}"
   end
