@@ -14,21 +14,36 @@
         %span.glyphicon.glyphicon-saved(aria-hidden='true')
         = flash.notice
 
-    %table.table.table-hover
-      %thead
-        %tr
-          %th Horário
-          %th Nome
-          %th Número
-          %th
-      %tbody
-        - @appointments.each do |appointment|
-          %tr
-            %td= l(appointment.begin_at, format: '%H:%M')
-            %td= appointment.name
-            %td= "#{appointment.area}-#{appointment.phone}"
-            %td= link_to 'Alterar', [:edit, appointment],
-              class: %w[btn btn-default btn-xs]
+    %table
+      - @appointments.each do |appointment|
+        %li.list-group-item
+          %h1= l(appointment.begin_at, format: '%H:%M')
+          = appointment.name
+          = "#{appointment.area}-#{appointment.phone}"
+
+          %ol.list-inline.pull-right
+            %li.btn-group
+              %button.btn.btn-default.dropdown-toggle(data-toggle='dropdown')
+                %span.glyphicon.glyphicon-time
+                Aguardando
+                %span.caret
+
+              %ul.dropdown-menu
+                %li
+                  %a(href='#') Confirmar
+                %li
+                  %a(href='#') Desmarcar
+
+            %li
+              = link_to [:edit, appointment],
+                class: %w[btn btn-primary] do
+                %span.glyphicon.glyphicon-pencil
+                Editar
+
+            %li
+              %button.btn.btn-danger
+                %span.glyphicon.glyphicon-trash
+                Deletar
 
 :coffee
   hermes.appointments("#{l(time, format: '%Y/%m/%d')}")
