@@ -1,0 +1,18 @@
+= form_for @user do |f|
+  %fieldset
+    = f.label :email
+    = f.email_field :email
+
+  %fieldset
+    = f.label :name
+    = f.text_field :name
+
+  %fieldset
+    = f.label :password
+    = f.password_field :password
+
+  %fieldset
+    = f.label :business
+    = f.select :business, %w[medical dental aesthetic]
+
+  = f.submit
