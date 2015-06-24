@@ -1,6 +1,16 @@
 require 'rails_helper'
 
-RSpec.describe UsersController, type: :controller do
+describe UsersController do
+  include Warden::Test::Helpers
+
+  def user_params
+    {
+      name: 'ACME Clinic',
+      email: 'john.doe@example.com',
+      business: 'medical',
+      password: 'foobar12'
+    }
+  end
 
   describe "GET #new" do
     it "returns http success" do
@@ -9,24 +19,11 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  describe "GET #create" do
+  describe "POST #create" do
     it "returns http success" do
-      get :create
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET #edit" do
-    it "returns http success" do
-      get :edit
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET #update" do
-    it "returns http success" do
-      get :update
-      expect(response).to have_http_status(:success)
+      allow(request.env['warden']).to receive(:set_user)
+      post :create, user: user_params
+      expect(response).to have_http_status(:redirect)
     end
   end
 
