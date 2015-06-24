@@ -1,0 +1,20 @@
+!!!
+%html
+  %head
+    %meta(charset="utf-8")
+    %title Hermes
+    = stylesheet_link_tag 'application', 'data-turbolinks-track' => true, 'media' => 'all'
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+  %body
+    %div.navbar.navbar-default.navbar-static-top
+      %div.container
+        %a.navbar-brand(href=appointments_path) Hermes
+
+        %ul.nav.navbar-nav.navbar-right
+          %li= link_to 'Criar conta', '#'
+          %li= link_to 'Ajuda', '#'
+          %li= link_to 'Fale conosco', '#'
+
+    = yield
