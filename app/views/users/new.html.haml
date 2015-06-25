@@ -2,3 +2,11 @@
   %div.col-md-4.col-md-offset-4
     = form_for @user, url: signup_path, html: { class: 'form-horizontal' } do |form|
       = render form
+
+      %fieldset.form-group
+        = form.submit 'Cadastrar-se', class: 'btn btn-primary btn-block btn-lg'
+
+      %fieldset.form-group
+        -#
+          = link_to 'Esqueci minha senha', '#', class: 'btn btn-default btn-block'
+        = link_to 'Já tenho uma conta', login_path, class: 'btn btn-default btn-block'

@@ -13,10 +13,3 @@
 %fieldset.form-group
   = form.label :business
   = form.select :business, %w[medical dental aesthetic], {},class: 'form-control'
-
-%fieldset.form-group
-  = form.submit 'Cadastrar-se', class: 'btn btn-primary btn-block btn-lg'
-
-%fieldset.form-group
-  = link_to 'Esqueci minha senha', '#', class: 'btn btn-default btn-block'
-  = link_to 'Já tenho uma conta', login_path, class: 'btn btn-default btn-block'
