@@ -2,7 +2,7 @@ class AppointmentsController < ApplicationController
   include Authenticated
 
   helper_method :time
-  before_action :set_appointment, except: [:index, :new]
+  before_action :set_appointment, except: [:index, :new, :create]
 
   def index
     @appointments = current_user.appointments.at(time)
