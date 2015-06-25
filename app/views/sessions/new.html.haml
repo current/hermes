@@ -18,7 +18,6 @@
         %fieldset.form-group
           = submit_tag 'Login', class: 'btn btn-lg btn-primary btn-block'
 
-    %div.row
-      %ul.nav.nav-pills.nav-justified
-        %li= link_to 'Esqueci minha senha', '#'
-        %li= link_to 'Ainda não tenho conta', signup_path
+        %fieldset.form-group
+          = link_to 'Esqueci minha senha', '#', class: 'btn btn-default btn-block'
+          = link_to 'Não tenho uma conta', signup_path, class: 'btn btn-default btn-block'

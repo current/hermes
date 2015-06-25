@@ -1,2 +1,4 @@
-= form_for @user, url: signup_path do |form|
-  = render form
+%div.container
+  %div.col-md-4.col-md-offset-4
+    = form_for @user, url: signup_path, html: { class: 'form-horizontal' } do |form|
+      = render form

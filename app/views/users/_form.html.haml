@@ -1,17 +1,22 @@
-%fieldset
+%fieldset.form-group
   = form.label :email
-  = form.email_field :email
+  = form.email_field :email, class: 'form-control'
 
-%fieldset
+%fieldset.form-group
   = form.label :name
-  = form.text_field :name
+  = form.text_field :name, class: 'form-control'
 
-%fieldset
+%fieldset.form-group
   = form.label :password
-  = form.password_field :password
+  = form.password_field :password, class: 'form-control'
 
-%fieldset
+%fieldset.form-group
   = form.label :business
-  = form.select :business, %w[medical dental aesthetic]
+  = form.select :business, %w[medical dental aesthetic], {},class: 'form-control'
 
-= form.submit
+%fieldset.form-group
+  = form.submit 'Cadastrar-se', class: 'btn btn-primary btn-block btn-lg'
+
+%fieldset.form-group
+  = link_to 'Esqueci minha senha', '#', class: 'btn btn-default btn-block'
+  = link_to 'Já tenho uma conta', login_path, class: 'btn btn-default btn-block'
