@@ -2,18 +2,20 @@ class Appointment < ActiveRecord::Base
   belongs_to :user
 
   validates_presence_of :name, :area, :phone, :begin_at
-
   default_scope -> { order(:begin_at) }
-  scope :after, -> (ts) { where('begin_at > ?', ts.midnight) }
-  scope :before, -> (ts) { where('begin_at < ?', ts.tomorrow.midnight) }
-  scope :at, -> (ts) { before(ts).after(ts) }
-  scope :outdated, -> { before(Time.zone.now + 1.day) }
-  scope :pending, -> { where(notified: false) }
+
+  def self.at(ts)
+    where('begin_at > ? AND begin_at < ?', ts.midnight, ts.midnight.tomorrow)
+  end
+
+  def self.pending
+    where(notified: false).where('begin_at > ?', 1.day.since)
+  end
 
   validate :area_format, :phone_format
 
   def self.notify!
-    pending.outdated.find_each { |a| a.notify! }
+    pending.find_each { |a| a.notify! }
   end
 
   def notify!
