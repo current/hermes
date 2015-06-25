@@ -18,9 +18,7 @@
         %fieldset.form-group
           = submit_tag 'Login', class: 'btn btn-lg btn-primary btn-block'
 
-        %fieldset.form-group
-          %ul.nav.nav-pills.nav-justified
-            %li
-              %a(href='#') Esqueci minha senha
-            %li
-              %a(href='#') Ainda não tenho conta
+    %div.row
+      %ul.nav.nav-pills.nav-justified
+        %li= link_to 'Esqueci minha senha', '#'
+        %li= link_to 'Ainda não tenho conta', signup_path
