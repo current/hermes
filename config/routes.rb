@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   get 'signup' => 'users#new'
   post 'signup' => 'users#create'
 
-  resources :appointments
+  resources :appointments do
+    get :status, :on => :member
+  end
 
   get 'today' => 'appointments#index'
   get ':year/:month/:day' => 'appointments#index', as: 'date'
