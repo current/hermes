@@ -1,15 +1,15 @@
 %fieldset.form-group
   = form.label :email
-  = form.email_field :email, class: 'form-control'
+  = form.email_field :email, class: 'form-control input-lg'
 
 %fieldset.form-group
   = form.label :name
-  = form.text_field :name, class: 'form-control'
+  = form.text_field :name, class: 'form-control input-lg'
 
 %fieldset.form-group
   = form.label :password
-  = form.password_field :password, class: 'form-control'
+  = form.password_field :password, class: 'form-control input-lg'
 
 %fieldset.form-group
   = form.label :business
-  = form.select :business, %w[medical dental aesthetic], {},class: 'form-control'
+  = form.select :business, %w[medical dental aesthetic], {}, class: 'form-control input-lg'
