@@ -208,9 +208,15 @@ pt-BR:
 
   activerecord:
     models:
+      user: Usuário
       appointment: Compromisso
     attributes:
       appointment:
         name: Nome
         area: DDD
         phone: Telefone
+      user:
+        email: E-mail
+        name: Nome
+        password: Senha
+        business: Tipo de negócio
