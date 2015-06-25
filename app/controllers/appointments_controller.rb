@@ -1,17 +1,19 @@
 class AppointmentsController < ApplicationController
+  include Authenticated
+
   helper_method :time
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
 
   def index
-    @appointments = Appointment.at(time)
+    @appointments = current_user.appointments.at(time)
   end
 
   def new
-    @appointment = Appointment.new
+    @appointment = current_user.appointments.new
   end
 
   def create
-    @appointment = Appointment.new(appointment_params)
+    @appointment = current_user.appointments.new(appointment_params)
 
     if @appointment.save
       redirect_to [:date, @appointment.to_date], notice: 'Compromisso adicionado'
@@ -35,7 +37,7 @@ class AppointmentsController < ApplicationController
 
   private
   def set_appointment
-    @appointment = Appointment.find(params[:id])
+    @appointment = current_user.appointments.find(params[:id])
   end
 
   def appointment_params

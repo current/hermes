@@ -1,5 +1,6 @@
 class Appointment < ActiveRecord::Base
-  attr_accessor :time, :date
+  belongs_to :user
+
   validates_presence_of :name, :area, :phone, :begin_at
 
   default_scope -> { order(:begin_at) }
