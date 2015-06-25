@@ -16,7 +16,7 @@
 
     %ul.list-group
       - @appointments.each do |appointment|
-        %li.list-group-item(class="#{appointment.status}")
+        %li.list-group-item(class="#{status_stylesheet(appointment)}")
           %strong= l(appointment.begin_at, format: '%H:%M')
           %big.name= appointment.name
 
@@ -27,12 +27,11 @@
                 %span.caret
 
               %ul.dropdown-menu
-                %li
-                  %a(href='#') Aguardando
-                %li
-                  %a(href='#') Confirmado
-                %li
-                  %a(href='#') Desmarcado
+                %li= link_to 'Confirmar', [:status, appointment, new: 'confirmed']
+                %li= link_to 'Desmarcar', [:status, appointment, new: 'canceled']
+                %li= link_to 'Aguardar', [:status, appointment, new: 'waiting']
+                %li.divider
+                %li= link_to 'Limpar', [:status, appointment, new: 'unknown']
 
 :coffee
   hermes.appointments("#{l(time, format: '%Y/%m/%d')}")

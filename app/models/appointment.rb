@@ -2,6 +2,7 @@ class Appointment < ActiveRecord::Base
   belongs_to :user
 
   validates_presence_of :name, :area, :phone, :begin_at
+  validates_inclusion_of :status, in: %w[unknow waiting confirmed canceled]
   default_scope -> { order(:begin_at) }
 
   def self.at(ts)
@@ -9,7 +10,7 @@ class Appointment < ActiveRecord::Base
   end
 
   def self.pending
-    where(notified: false).where('begin_at > ?', 1.day.since)
+    where(status: 'pending').where('begin_at > ?', 1.day.since)
   end
 
   validate :area_format, :phone_format
@@ -26,16 +27,7 @@ class Appointment < ActiveRecord::Base
       to: number,
       body: name
 
-    update(notified: true)
-  end
-
-  def status
-    [
-      'list-group-item-success',
-      'list-group-item-danger',
-      'list-group-item-warning',
-      nil
-    ].sample
+    update(status: 'waiting')
   end
 
   def number

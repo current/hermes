@@ -2,7 +2,7 @@ class AppointmentsController < ApplicationController
   include Authenticated
 
   helper_method :time
-  before_action :set_appointment, only: [:show, :edit, :update, :destroy]
+  before_action :set_appointment, except: [:index, :new]
 
   def index
     @appointments = current_user.appointments.at(time)
@@ -33,6 +33,11 @@ class AppointmentsController < ApplicationController
   def destroy
     @appointment.destroy
     redirect_to :appointments, notice: 'Appointment was successfully destroyed.'
+  end
+
+  def status
+    @appointment.update(status: params[:new])
+    redirect_to [:date, @appointment.to_date]
   end
 
   private
