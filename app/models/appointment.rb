@@ -2,7 +2,7 @@ class Appointment < ActiveRecord::Base
   belongs_to :user
 
   validates_presence_of :name, :area, :phone, :begin_at
-  validates_inclusion_of :status, in: %w[unknow waiting confirmed canceled]
+  validates_inclusion_of :status, in: %w[unknown waiting confirmed canceled]
   default_scope -> { order(:begin_at) }
 
   def self.at(ts)
