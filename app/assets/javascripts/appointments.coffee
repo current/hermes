@@ -36,4 +36,4 @@ hermes.appointments = (date) ->
 
   picker.on 'dp.change', (ev) ->
     next = ev.date.format(ts)
-    Turbolinks.visit("/appointments/#{next}")
+    Turbolinks.visit("/#{next}")

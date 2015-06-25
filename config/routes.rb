@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :appointments
 
-  get '/appointments/:year/:month/:day' => 'appointments#index', as: 'date'
+  get '/:year/:month/:day' => 'appointments#index', as: 'date'
 
   root 'sessions#new'
 end
