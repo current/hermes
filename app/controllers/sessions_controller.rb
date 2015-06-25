@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  include Public
+
   def create
     if warden.authenticate
       redirect_to :today

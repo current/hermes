@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  include Public
+
   def new
     @user = User.new
   end
