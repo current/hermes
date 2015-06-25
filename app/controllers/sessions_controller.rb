@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   def create
     if warden.authenticate
-      redirect_to :appointments
+      redirect_to :today
     else
       flash.alert = warden.message
       redirect_to :login

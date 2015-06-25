@@ -45,12 +45,12 @@ class AppointmentsController < ApplicationController
   end
 
   def time
-    Time.zone.parse("#{year}-#{month}-#{day}")
-  end
+    today = Time.zone.today
 
-  [:year, :month, :day].each do |field|
-    define_method field do
-      params[field] || Time.zone.now.send(field)
-    end
+    year = params[:year] || today.year
+    month = params[:month] || today.month
+    day = params[:day] || today.day
+
+    Time.zone.parse("#{year}-#{month}-#{day}")
   end
 end
