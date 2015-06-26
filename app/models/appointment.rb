@@ -25,7 +25,7 @@ class Appointment < ActiveRecord::Base
     client.messages.create \
       from: ENV['TWILIO_FROM'],
       to: number,
-      body: name
+      body: message
 
     update(status: 'waiting')
   end
@@ -47,5 +47,9 @@ class Appointment < ActiveRecord::Base
     errors.add(:phone, :invalid) if phone =~ /[^\d -]/
     errors.add(:phone, :invalid) if phone.gsub(/\D/, '').size < 8
     errors.add(:phone, :invalid) if phone.gsub(/\D/, '').size > 9
+  end
+
+  def message
+    user.message(begin_at)
   end
 end

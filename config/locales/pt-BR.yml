@@ -204,6 +204,7 @@ pt-BR:
       default: "%a, %d de %B de %Y, %H:%M:%S %z"
       long: "%d de %B de %Y, %H:%M"
       short: "%d de %B, %H:%M"
+      shortest: "%d/%m às %H:%M"
     pm: ''
 
   activerecord:
@@ -226,3 +227,10 @@ pt-BR:
       medical: Clínica Médica
       dental: Clínica Odontológica
       aesthetic: Clínica Estética
+      other: Outros
+
+  sms:
+    medical: "Você tem uma consulta com %{name} em %{at}. Para confirmar responda SIM"
+    dental: "Você tem uma consulta com %{name} em %{at}. Para confirmar responda SIM"
+    aesthetics: "Você tem uma sessão com %{name} em %{at}. Para confirmar responda SIM"
+    other: "Você tem um compromisso com %{name} em %{at}. Para confirmar responda SIM"
