@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       warden.set_user(@user)
       redirect_to :today
     else
-      render 'new'
+      render :new
     end
   end
 
