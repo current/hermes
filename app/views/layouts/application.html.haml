@@ -13,8 +13,7 @@
         %a.navbar-brand(href=today_path) Hermes
 
         %ul.nav.navbar-nav.navbar-right
-          -#
-            %li= link_to 'Configurações', '#'
+          %li= link_to 'Configurações', settings_path
           %li= link_to 'Sair', logout_path
 
     = yield
