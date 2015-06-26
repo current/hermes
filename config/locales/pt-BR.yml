@@ -232,5 +232,5 @@ pt-BR:
   sms:
     medical: "Você tem uma consulta com %{name} em %{at}. Para confirmar responda SIM"
     dental: "Você tem uma consulta com %{name} em %{at}. Para confirmar responda SIM"
-    aesthetics: "Você tem uma sessão com %{name} em %{at}. Para confirmar responda SIM"
+    aesthetic: "Você tem uma sessão com %{name} em %{at}. Para confirmar responda SIM"
     other: "Você tem um compromisso com %{name} em %{at}. Para confirmar responda SIM"
