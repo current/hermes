@@ -2,12 +2,15 @@
   = f.hidden_field :begin_at
 
   - if @appointment.errors.any?
-    %div.row.well
-      %div.col-md-6
-        #error_explanation
+    %div.col-md-6.col-md-offset-3
+      %div.panel.panel-danger
+        %div.panel-heading
+          %div.panel-title
+            Compromisso não pode ser criado
+        %div.panel-body
           %ul
-            - @appointment.errors.full_messages.each do |msg|
-              %li= msg
+            - @appointment.errors.full_messages.each do |message|
+              %li= message
 
   %div.row
     %div.col-md-5.col-md-offset-3
