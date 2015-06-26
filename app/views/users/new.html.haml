@@ -1,5 +1,15 @@
 %div.container
   %div.col-md-4.col-md-offset-4
+    - if @user.errors.any?
+      %div.panel.panel-danger
+        %div.panel-heading
+          %div.panel-title
+            Usuário não pode ser criado
+        %div.panel-body
+          %ul
+            - @user.errors.full_messages.each do |message|
+              %li= message
+
     = form_for @user, url: signup_path, html: { class: 'form-horizontal' } do |form|
       = render form
 
