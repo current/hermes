@@ -1,15 +1,17 @@
 %fieldset.form-group
   = form.label :name
-  = form.text_field :name, class: 'form-control input-lg'
+  = form.text_field :name, class: 'form-control input-lg', placeholder: 'Nome utilizado comercialmente'
 
 %fieldset.form-group
   = form.label :email
-  = form.email_field :email, class: 'form-control input-lg'
+  = form.email_field :email, class: 'form-control input-lg', placeholder: 'E-mail utilizado para login'
 
 %fieldset.form-group
   = form.label :password
-  = form.password_field :password, class: 'form-control input-lg'
+  = form.password_field :password, class: 'form-control input-lg', placeholder: 'Senha utilizada para login'
 
 %fieldset.form-group
   = form.label :business
-  = form.select :business, %w[medical dental aesthetic], {}, class: 'form-control input-lg'
+  = form.select :business, business_choices,
+    { prompt: 'Escolha um ramo' },
+    { class: 'form-control input-lg' }

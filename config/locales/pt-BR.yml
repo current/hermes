@@ -217,6 +217,12 @@ pt-BR:
         phone: Telefone
       user:
         email: E-mail
-        name: Nome do estabelecimento
+        name: Nome
         password: Senha
-        business: Tipo de negócio
+        business: Ramo
+
+  users:
+    form:
+      medical: Clínica Médica
+      dental: Clínica Odontológica
+      aesthetic: Clínica Estética
