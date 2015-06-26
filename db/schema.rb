@@ -18,14 +18,14 @@ ActiveRecord::Schema.define(version: 20150623043235) do
   enable_extension "citext"
 
   create_table "appointments", force: :cascade do |t|
-    t.integer  "user_id",                        null: false
-    t.string   "status",     default: "unknown", null: false
-    t.datetime "begin_at",                       null: false
-    t.citext   "name",                           null: false
+    t.integer  "user_id",                     null: false
+    t.string   "status",     default: "none", null: false
+    t.datetime "begin_at",                    null: false
+    t.citext   "name",                        null: false
     t.string   "area"
     t.string   "phone"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_index "appointments", ["begin_at"], name: "index_appointments_on_begin_at", using: :btree

@@ -2,7 +2,7 @@ class Appointment < ActiveRecord::Base
   belongs_to :user
 
   validates_presence_of :name, :area, :phone, :begin_at
-  validates_inclusion_of :status, in: %w[unknown waiting confirmed canceled]
+  validates_inclusion_of :status, in: %w[ none waiting confirmed canceled ]
   default_scope -> { order(:begin_at) }
 
   def self.at(ts)
@@ -10,7 +10,7 @@ class Appointment < ActiveRecord::Base
   end
 
   def self.pending
-    where(status: 'pending').where('begin_at > ?', 1.day.since)
+    where(status: 'none').where('begin_at < ?', 1.day.since)
   end
 
   validate :area_format, :phone_format
