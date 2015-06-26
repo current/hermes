@@ -4,7 +4,7 @@ class CreateAppointments < ActiveRecord::Migration
 
     create_table :appointments do |t|
       t.references :user, null: false, index: true
-      t.string :status, default: 'unknown', null: false, index: true
+      t.string :status, default: 'none', null: false, index: true
       t.timestamp :begin_at, null: false, index: true
       t.citext :name, null: false
       t.string :area

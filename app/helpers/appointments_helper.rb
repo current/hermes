@@ -1,7 +1,7 @@
 module AppointmentsHelper
   def status_stylesheet(appointment)
     case appointment.status
-    when 'unknown'
+    when 'none'
       nil
     when 'waiting'
       'list-group-item-warning'
