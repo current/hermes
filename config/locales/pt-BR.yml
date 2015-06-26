@@ -217,6 +217,6 @@ pt-BR:
         phone: Telefone
       user:
         email: E-mail
-        name: Nome
+        name: Nome do estabelecimento
         password: Senha
         business: Tipo de negócio
