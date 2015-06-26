@@ -10,7 +10,7 @@ class Appointment < ActiveRecord::Base
   end
 
   def self.pending
-    where(status: 'none').where('begin_at > ?', 1.day.since)
+    where(status: 'none').where('begin_at < ?', 1.day.since)
   end
 
   validate :area_format, :phone_format
