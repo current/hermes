@@ -2,7 +2,7 @@
   %div.col-md-4.col-md-offset-4
     - if flash.alert
       %div.row
-        %p.well= flash.alert
+        %div.alert.alert-danger(role='alert')= flash.alert
     %div.row
       = form_tag :login, class: 'form-horizontal' do
         %fieldset.form-group
@@ -21,4 +21,4 @@
         %fieldset.form-group
           -#
             = link_to 'Esqueci minha senha', '#', class: 'btn btn-default btn-block'
-          = link_to 'Não tenho uma conta', signup_path, class: 'btn btn-default btn-block'
+          = link_to 'Não tenho uma conta', signup_path, class: 'btn btn-default btn-block btn-lg'
