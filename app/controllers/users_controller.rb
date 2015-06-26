@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
     if @user.save
       warden.set_user(@user)
-      redirect_to :appointments
+      redirect_to :today
     else
       render 'new'
     end
