@@ -3,3 +3,11 @@
     %div.col-md-9.col-md-offset-3
       %h1 Editar compromisso
   = render 'form'
+
+  = form_for @appointment do |f|
+    %input(type='hidden' name='_method' value='delete')
+
+    %div.row
+      %div.form-group.from-group-lg
+        %div.col-md-5.col-md-offset-3
+          %button.btn.btn-lg.btn-danger.btn-block(data-confirm='Deletar?') Deletar
