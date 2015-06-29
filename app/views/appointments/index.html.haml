@@ -8,6 +8,21 @@
     %div.well.row
       %input#calendar(type='hidden')
 
+    %div.row
+      %div.panel.panel-default
+        %div.panel-heading
+          Próximos compromissos
+        %div.list-group
+          - @upcoming.each do |day, total|
+            = link_to [:date, to_date(day)], class: 'list-group-item' do
+              - if day.today?
+                = 'Hoje'
+              - else
+                = l(day.to_date, format: '%A')
+
+              - unless total.zero?
+                %span.badge= total
+
   %div.col-md-9
     - if flash.notice
       %div.alert.alert-success(role='alert')

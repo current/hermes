@@ -1,11 +1,12 @@
 class AppointmentsController < ApplicationController
   include Authenticated
 
-  helper_method :time
+  helper_method :time, :to_date
   before_action :set_appointment, except: [:index, :new, :create]
 
   def index
     @appointments = current_user.appointments.at(time)
+    @upcoming = week { |d| [d, current_user.appointments.live.at(d).count] }
   end
 
   def new
@@ -16,7 +17,8 @@ class AppointmentsController < ApplicationController
     @appointment = current_user.appointments.new(appointment_params)
 
     if @appointment.save
-      redirect_to [:date, @appointment.to_date], notice: 'Compromisso adicionado'
+      redirect_to [:date, to_date(@appointment.begin_at)],
+        notice: 'Compromisso adicionado'
     else
       render :new
     end
@@ -24,7 +26,8 @@ class AppointmentsController < ApplicationController
 
   def update
     if @appointment.update(appointment_params)
-      redirect_to [:date, @appointment.to_date], notice: 'Compromisso alterado'
+      redirect_to [:date, to_date(@appointment.begin_at)],
+        notice: 'Compromisso alterado'
     else
       render :edit
     end
@@ -37,7 +40,7 @@ class AppointmentsController < ApplicationController
 
   def status
     @appointment.update(status: params[:new])
-    redirect_to [:date, @appointment.to_date]
+    redirect_to [:date, to_date(@appointment.begin_at)]
   end
 
   private
@@ -57,5 +60,13 @@ class AppointmentsController < ApplicationController
     day = params[:day] || today.day
 
     Time.zone.parse("#{year}-#{month}-#{day}")
+  end
+
+  def to_date(ts)
+    { year: ts.year, month: ts.month, day: ts.day }
+  end
+
+  def week
+    7.times.map { |i| yield(i.days.since) }
   end
 end

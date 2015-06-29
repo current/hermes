@@ -10,8 +10,12 @@ class Appointment < ActiveRecord::Base
 
   default_scope -> { order(:begin_at) }
 
+  def self.live
+    where.not(status: 'canceled')
+  end
+
   def self.at(ts)
-    where('begin_at > ? AND begin_at < ?', ts.midnight, ts.midnight.tomorrow)
+    where('begin_at > ? AND begin_at < ?', ts.midnight, ts.tomorrow.midnight)
   end
 
   def self.pending
@@ -46,10 +50,6 @@ class Appointment < ActiveRecord::Base
 
   def number
     "55#{(area + phone).gsub(/\D/, '')}"
-  end
-
-  def to_date
-    { year: begin_at.year, month: begin_at.month, day: begin_at.day }
   end
 
   private
