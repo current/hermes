@@ -7,13 +7,16 @@
       = form_tag :login, class: 'form-horizontal' do
         %fieldset.form-group
           = label_tag :email, 'E-mail'
-          %div.input-group
-            %span.input-group-addon @
-            = email_field_tag :email, params[:email], class: 'form-control input-lg'
+          = email_field_tag :email, params[:email],
+            class: 'form-control input-lg',
+            placeholder: 'E-mail utilizado para login'
 
         %fieldset.form-group
           = label_tag :password, 'Senha'
-          = password_field_tag :password, nil, class: 'form-control input-lg'
+          = password_field_tag :password, nil,
+            class: 'form-control input-lg',
+            placeholder: 'Senha utilizada para login'
+
 
         %fieldset.form-group
           = submit_tag 'Login', class: 'btn btn-lg btn-primary btn-block'

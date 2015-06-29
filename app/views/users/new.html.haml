@@ -13,15 +13,21 @@
     = form_for @user, url: signup_path, html: { class: 'form-horizontal' } do |form|
       %fieldset.form-group
         = form.label :name
-        = form.text_field :name, class: 'form-control input-lg', placeholder: 'Nome utilizado comercialmente'
+        = form.text_field :name,
+          class: 'form-control input-lg',
+          placeholder: 'Nome utilizado comercialmente'
 
       %fieldset.form-group
         = form.label :email
-        = form.email_field :email, class: 'form-control input-lg', placeholder: 'E-mail utilizado para login'
+        = form.email_field :email,
+          class: 'form-control input-lg',
+          placeholder: 'E-mail utilizado para login'
 
       %fieldset.form-group
         = form.label :password
-        = form.password_field :password, class: 'form-control input-lg', placeholder: 'Senha utilizada para login'
+        = form.password_field :password,
+          class: 'form-control input-lg',
+          placeholder: 'Senha utilizada para login'
 
       %fieldset.form-group
         = form.label :business
