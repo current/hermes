@@ -230,7 +230,7 @@ pt-BR:
       other: Outros
 
   sms:
-    medical: "Você tem uma consulta com %{name} em %{at}."
-    dental: "Você tem uma consulta com %{name} em %{at}."
-    aesthetic: "Você tem uma sessão com %{name} em %{at}."
-    other: "Você tem um compromisso com %{name} em %{at}."
+    medical: "Você tem uma consulta com %{name} em %{at}. Responda 1 nesta mensagem para confirmar."
+    dental: "Você tem uma consulta com %{name} em %{at}. Responda 1 nesta mensagem para confirmar."
+    aesthetic: "Você tem uma sessão com %{name} em %{at}. Responda 1 nesta mensagem para confirmar."
+    other: "Você tem um compromisso com %{name} em %{at}. Responda 1 nesta mensagem para confirmar."

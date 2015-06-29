@@ -22,6 +22,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'unicorn'
 
 gem 'twilio-ruby'
+gem 'rest-client'
 gem 'newrelic_rpm'
 
 group :development, :test do

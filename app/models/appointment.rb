@@ -1,8 +1,13 @@
+require 'csv'
+require 'zenvia'
+
 class Appointment < ActiveRecord::Base
   belongs_to :user
 
   validates_presence_of :name, :area, :phone, :begin_at
   validates_inclusion_of :status, in: %w[ none waiting confirmed canceled ]
+  validate :area_format, :phone_format
+
   default_scope -> { order(:begin_at) }
 
   def self.at(ts)
@@ -13,25 +18,34 @@ class Appointment < ActiveRecord::Base
     where(status: 'none').where('begin_at < ?', 1.day.since)
   end
 
-  validate :area_format, :phone_format
+  def self.number(number)
+    where('? || area || phone = ?', '55', number)
+  end
 
   def self.notify!
     pending.find_each { |a| a.notify! }
   end
 
+  def self.receive!
+    provider = Zenvia.new
+    response = provider.receive
+
+    csv = CSV.parse(response, headers: true, col_sep: ';')
+
+    csv.each do |row|
+      next if row[3].to_i != 1
+      number(row[2]).update_all(status: 'confirmed')
+    end
+  end
+
   def notify!
-    client = Twilio::REST::Client.new
-
-    client.messages.create \
-      from: ENV['TWILIO_FROM'],
-      to: number,
-      body: message
-
+    provider = Zenvia.new
+    provider.send(number, message)
     update(status: 'waiting')
   end
 
   def number
-    "+55#{(area + phone).gsub(/\D/, '')}"
+    "55#{(area + phone).gsub(/\D/, '')}"
   end
 
   def to_date

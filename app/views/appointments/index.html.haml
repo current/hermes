@@ -31,7 +31,7 @@
                 %li= link_to 'Desmarcar', [:status, appointment, new: 'canceled']
                 %li= link_to 'Aguardar', [:status, appointment, new: 'waiting']
                 %li.divider
-                %li= link_to 'Limpar', [:status, appointment, new: 'unknown']
+                %li= link_to 'Limpar', [:status, appointment, new: 'none']
 
 :coffee
   hermes.appointments("#{l(time, format: '%Y/%m/%d')}")
