@@ -32,7 +32,7 @@ class AppointmentsController < ApplicationController
 
   def destroy
     @appointment.destroy
-    redirect_to :appointments, notice: 'Appointment was successfully destroyed.'
+    redirect_to :today, notice: 'Appointment was successfully destroyed.'
   end
 
   def status
