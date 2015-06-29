@@ -1,4 +1,5 @@
 require 'rest-client'
+require 'i18n'
 
 class Zenvia
   attr_accessor :account, :code
@@ -13,7 +14,7 @@ class Zenvia
   end
 
   def send(to, msg)
-    request(dispatch: 'send', to: to, msg: msg)
+    request(dispatch: 'send', to: to, msg: I18n.transliterate(msg))
   end
 
   def receive
