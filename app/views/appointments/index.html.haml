@@ -1,7 +1,7 @@
 %div.container
   %div.col-md-3
     %div.row.form-group
-      %a.btn.btn-primary.btn-lg.btn-block(href=new_appointment_path)
+      %a.btn.btn-primary.btn-lg.btn-block(href="#{new_appointment_path(at: time.to_date)}")
         %i.glyphicon.glyphicon-plus
         %span Adicionar compromisso
 

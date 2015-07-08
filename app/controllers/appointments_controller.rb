@@ -10,7 +10,7 @@ class AppointmentsController < ApplicationController
   end
 
   def new
-    @appointment = current_user.appointments.new
+    @appointment = current_user.appointments.new(begin_at: params[:at])
   end
 
   def create
