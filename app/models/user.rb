@@ -9,6 +9,6 @@ class User < ActiveRecord::Base
   validates_presence_of :email, :name
 
   def message(at)
-    I18n.t("sms.#{business}", name: name, at: I18n.l(at, :format => :shortest))
+    I18n.t(business, scope: 'sms', name: name, at: at)
   end
 end

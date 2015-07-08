@@ -37,7 +37,7 @@ class Appointment < ActiveRecord::Base
     csv = CSV.parse(response, headers: true, col_sep: ';')
 
     csv.each do |row|
-      next if row[3].to_i != 1
+      next if row[3].strip =~ /\A(sim|s)[.]?\z/i
       number(row[2]).update_all(status: 'confirmed')
     end
   end
@@ -52,6 +52,10 @@ class Appointment < ActiveRecord::Base
     "55#{(area + phone).gsub(/\D/, '')}"
   end
 
+  def message
+    user.message(I18n.l(begin_at, format: :shortest))
+  end
+
   private
   def area_format
     errors.add(:area, :invalid) if area !~ /\A\d\d\z/
@@ -61,9 +65,5 @@ class Appointment < ActiveRecord::Base
     errors.add(:phone, :invalid) if phone =~ /[^\d -]/
     errors.add(:phone, :invalid) if phone.gsub(/\D/, '').size < 8
     errors.add(:phone, :invalid) if phone.gsub(/\D/, '').size > 9
-  end
-
-  def message
-    user.message(begin_at)
   end
 end
