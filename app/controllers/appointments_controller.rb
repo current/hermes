@@ -2,7 +2,7 @@ class AppointmentsController < ApplicationController
   include Authenticated
 
   helper_method :time, :to_date
-  before_action :set_appointment, except: [:index, :new, :create]
+  before_action :set_appointment, except: [:index, :new, :create, :reply]
 
   def index
     @appointments = current_user.appointments.at(time)
@@ -41,6 +41,10 @@ class AppointmentsController < ApplicationController
   def status
     @appointment.update(status: params[:new])
     redirect_to [:date, to_date(@appointment.begin_at)]
+  end
+
+  def reply
+    head :ok
   end
 
   private

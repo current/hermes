@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   get 'logout' => 'sessions#destroy'
+
   get 'signup' => 'users#new'
   post 'signup' => 'users#create'
+
   get 'settings' => 'settings#edit'
   patch 'settings' => 'settings#update'
 
@@ -13,6 +15,7 @@ Rails.application.routes.draw do
     get :status, :on => :member
   end
 
+  get 'reply' => 'appointments#reply'
   get 'today' => 'appointments#index'
   get ':year/:month/:day' => 'appointments#index', as: 'date'
 
