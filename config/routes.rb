@@ -11,11 +11,12 @@ Rails.application.routes.draw do
   get 'settings' => 'settings#edit'
   patch 'settings' => 'settings#update'
 
+  resource :reply
+
   resources :appointments do
     get :status, :on => :member
   end
 
-  get 'reply' => 'appointments#reply'
   get 'today' => 'appointments#index'
   get ':year/:month/:day' => 'appointments#index', as: 'date'
 
