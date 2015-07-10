@@ -28,7 +28,7 @@ class Appointment < ActiveRecord::Base
 
   def notify!
     provider = Zenvia.new
-    provider.send(number, message)
+    provider.send(uuid, number, message)
     update(status: 'waiting')
   end
 
