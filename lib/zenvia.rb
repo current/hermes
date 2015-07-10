@@ -13,8 +13,12 @@ class Zenvia
     tap(&@@config)
   end
 
-  def send(to, msg)
-    request(dispatch: 'send', to: to, msg: I18n.transliterate(msg))
+  def send(uuid, to, msg)
+    request \
+      dispatch: 'send',
+      id: uuid,
+      to: to,
+      msg: I18n.transliterate(msg)
   end
 
   def receive

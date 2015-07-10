@@ -1,5 +1,8 @@
 class RepliesController < ApplicationController
-  def show
+  def create
+    @appointment = Appointment.find_by(uuid: params[:idMT])
+    @appointment.parse(params[:msg])
+
     head :ok
   end
 end

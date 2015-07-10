@@ -2,44 +2,28 @@ require 'csv'
 require 'zenvia'
 
 class Appointment < ActiveRecord::Base
+  attr_readonly :uuid
+
   belongs_to :user
 
-  validates_presence_of :name, :area, :phone, :begin_at
+  validates_presence_of :name, :area, :phone, :begin_at, :uuid
   validates_inclusion_of :status, in: %w[ none waiting confirmed canceled ]
   validate :area_format, :phone_format
 
+  scope :live, -> { where.not(status: 'canceled') }
+  scope :pending, -> { where(status: 'none').where('begin_at < ?', 1.day.since) }
+  scope :at, -> (ts) { where('begin_at > ? AND begin_at <= ?', ts.midnight, ts.tomorrow.midnight) }
+
   default_scope -> { order(:begin_at) }
 
-  def self.live
-    where.not(status: 'canceled')
-  end
-
-  def self.at(ts)
-    where('begin_at > ? AND begin_at < ?', ts.midnight, ts.tomorrow.midnight)
-  end
-
-  def self.pending
-    where(status: 'none').where('begin_at < ?', 1.day.since)
-  end
-
-  def self.number(number)
-    where('? || area || phone = ?', '55', number)
-  end
+  before_validation :set_uuid, on: :create
 
   def self.notify!
     pending.find_each { |a| a.notify! }
   end
 
-  def self.receive!
-    provider = Zenvia.new
-    response = provider.receive
-
-    csv = CSV.parse(response, headers: true, col_sep: ';')
-
-    csv.each do |row|
-      next if row[3].strip =~ /\A(sim|s)[.]?\z/i
-      number(row[2]).update_all(status: 'confirmed')
-    end
+  def parse(msg)
+    update(status: 'confirmed') if msg.strip =~ /\A(sim|s)[.]?\z/i
   end
 
   def notify!
@@ -65,5 +49,9 @@ class Appointment < ActiveRecord::Base
     errors.add(:phone, :invalid) if phone =~ /[^\d -]/
     errors.add(:phone, :invalid) if phone.gsub(/\D/, '').size < 8
     errors.add(:phone, :invalid) if phone.gsub(/\D/, '').size > 9
+  end
+
+  def set_uuid
+    write_attribute(:uuid, SecureRandom.uuid)
   end
 end
